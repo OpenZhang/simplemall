@@ -16,6 +16,7 @@ import com.simplemall.micro.serv.common.bean.account.AccAddressCriteria;
 import com.simplemall.micro.serv.common.bean.account.Account;
 import com.simplemall.micro.serv.common.bean.account.AccountCriteria;
 
+
 @Service
 public class AccountServiceImpl implements IAccountService {
 	
@@ -37,8 +38,9 @@ public class AccountServiceImpl implements IAccountService {
 		AccountCriteria criteria = new AccountCriteria();
 		criteria.createCriteria().andPhoneEqualTo(phone).andPasswordEqualTo(password);
 		List<Account> list = accountMapper.selectByExample(criteria);
-		logger.info("{}登陆成功!",phone);
-		return CollectionUtils.isNotEmpty(list)?list.get(0):new Account();
+		logger.info(list != null && list.size() > 0  ? "{}登陆成功!" : "{}登录失败",phone);
+//		return CollectionUtils.isNotEmpty(list)?list.get(0):new Account();
+		return list != null && list.size() > 0  ?list.get(0):new Account();
 	}
 
 	@Override
@@ -49,7 +51,8 @@ public class AccountServiceImpl implements IAccountService {
 		AccountCriteria example = new AccountCriteria();
 		example.createCriteria().andPhoneEqualTo(phone);
 		List<Account> list = accountMapper.selectByExample(example);
-		if (CollectionUtils.isNotEmpty(list)) {
+//		if (CollectionUtils.isNotEmpty(list)) {
+		if (list != null && list.size() > 0) {
 			logger.warn("{}-用户已存在，请选择其它用户名!",phone);
 			return false;
 		}
