@@ -41,7 +41,7 @@ public class APISecurityCheck {
 	 * 
 	 * @param joinPoint
 	 * @throws Exception
-	 * @throws BusinessException
+	 * @throws Exception
 	 */
 	@Before("execution(public * com.simplemall.micro.serv.page.api.*.* (..))")
 	public void doBeforeInService(JoinPoint joinPoint) throws Exception {
@@ -56,11 +56,13 @@ public class APISecurityCheck {
 		while (keyIter.hasNext()) {
 			String currKey = keyIter.next();
 			String value = ((String[]) inputParamMap.get(currKey))[0].toString();
-			if (access_token.equals(currKey)) {
+			logger.info("value==={}",value);
+			logger.info("access_token==="+access_token);
+				if (access_token.equals(currKey)) {
 				//验证此jwt是否已经被注销，由于jwt在有效期均有效，本案例借助redis实现注销机制
 				if(JedisUtil.KEYS.exists(value)){
-					throw new Exception("token已注销，请勿重复使用！");
-				}
+						throw new Exception("token已注销，请勿重复使用！");
+					}
 				try {
 					JWTUtils.parseJWT(value);
 				} catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException

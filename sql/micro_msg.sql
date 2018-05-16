@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.24 (32 bit)
 MySQL - 5.7.13 : Database - micro_msg
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -26,9 +27,9 @@ CREATE TABLE `tb_msg_notice` (
   `target_type` char(5) DEFAULT NULL COMMENT '目标类型SMS|EMAIL',
   `target_address` varchar(50) DEFAULT NULL COMMENT '目标地址',
   `content` varchar(30) DEFAULT NULL COMMENT '消息详情',
-  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_date` datetime ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',

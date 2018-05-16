@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.24 (32 bit)
 MySQL - 5.7.13 : Database - micro_order
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -35,9 +36,9 @@ CREATE TABLE `tb_ord_inf` (
   `post_fee` decimal(18,2) DEFAULT NULL COMMENT '配送费',
   `price` decimal(18,2) DEFAULT NULL COMMENT '订单总价',
   `create_by` varchar(32) DEFAULT NULL,
-  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_date` datetime ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',
@@ -60,9 +61,9 @@ CREATE TABLE `tb_ord_produt` (
   `prd_name` varchar(200) DEFAULT NULL COMMENT '商品名',
   `prd_price` decimal(18,2) DEFAULT NULL COMMENT '商品价',
   `prd_qty` int(4) DEFAULT NULL COMMENT '数量',
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',
@@ -83,9 +84,9 @@ CREATE TABLE `tb_ord_state` (
   `tid` varchar(32) NOT NULL,
   `serial_no` varchar(32) DEFAULT NULL COMMENT '流水号',
   `status` varchar(30) DEFAULT NULL COMMENT '订单状态',
-  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_date` datetime ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',

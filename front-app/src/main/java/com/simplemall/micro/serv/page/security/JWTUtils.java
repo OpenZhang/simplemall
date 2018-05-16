@@ -18,6 +18,8 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * ClassName: JWTUtils <br/>
@@ -29,7 +31,8 @@ import io.jsonwebtoken.UnsupportedJwtException;
  * @since JDK 1.6
  */
 public class JWTUtils {
-	
+
+	private static Logger logger = LoggerFactory.getLogger(JWTUtils.class);
 	static String SECRETKEY = "OVlpXYjNwaFJYUllVbXhXTkZaR1pEQlNiVkYzWTBac1YxWkZXbE";
 
 	/**
@@ -68,6 +71,7 @@ public class JWTUtils {
 		if (ttlMillis >= 0) {
 			long expMillis = nowMillis + ttlMillis;
 			Date exp = new Date(expMillis);
+			logger.info("exp:{}",exp);
 			builder.setExpiration(exp);
 		}
 		return builder.compact();
@@ -78,7 +82,6 @@ public class JWTUtils {
 	 *
 	 * @author guooo
 	 * @param jwt
-	 * @param stringKey
 	 * @return
 	 * @throws ExpiredJwtException
 	 * @throws UnsupportedJwtException

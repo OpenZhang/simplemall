@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.simplemall.micro.serv.common.constant.SystemConstants;
 import com.simplemall.micro.serv.common.service.JedisUtil;
+import redis.clients.jedis.Jedis;
 
 /**
  * 启动后就加载数据
@@ -31,9 +32,11 @@ public class StartUpLoading implements CommandLineRunner {
 		uris.add("/order/view");
 		uris.add("/order/state/change");
 		uris.add("/payment/pay");
+		uris.add("/prd/list");
 		
 		for (String uri : uris) {
 			JedisUtil.SETS.sadd(SystemConstants.URL_NEED_CHECK_KEY, uri);
+			System.out.println(JedisUtil.SETS.smembers(SystemConstants.URL_NEED_CHECK_KEY));
 		}
 	}
 

@@ -33,6 +33,9 @@
 | front-app        |    8088    |  前端服务，结合swagger2提供API管理(有小问题，swagger页面无法点击单个接口，可通过展开功能打开，待解决)  |
 
 
+token：
+
+
 # 快速上手
 - 1、先启动admin-server,eureka-server,conf-server三个基础服务
 - 2、再依次启动payment/order/product/account基础业务服务

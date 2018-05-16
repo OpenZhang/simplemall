@@ -24,7 +24,7 @@ public class JedisUtil {
 	/**
 	 * 缓存生存时间
 	 */
-	private final int expire = 60000;
+	private final int expire = 60;
 	/** 操作Key的方法 */
 	public static JedisUtil.Keys KEYS = new JedisUtil().new Keys();
 	/** 对存储结构为String类型的操作 */

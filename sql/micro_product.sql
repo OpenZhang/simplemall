@@ -2,7 +2,8 @@
 SQLyog Ultimate v11.24 (32 bit)
 MySQL - 5.7.13 : Database - micro_product
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -28,9 +29,9 @@ CREATE TABLE `tb_prd_extend` (
   `origin` varchar(16) DEFAULT NULL COMMENT '产地',
   `saled_qty` int(11) DEFAULT NULL COMMENT '售出数量',
   `create_by` varchar(32) DEFAULT NULL,
-  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_date` datetime NOT NULL ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',
@@ -56,9 +57,9 @@ CREATE TABLE `tb_prd_info` (
   `price` varchar(16) DEFAULT NULL COMMENT '库存',
   `store` int(10) DEFAULT NULL,
   `create_by` varchar(32) DEFAULT NULL,
-  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_date` datetime NOT NULL ,
   `update_by` varchar(32) DEFAULT NULL,
-  `update_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp NOT NULL ,
   `remark` varchar(1000) DEFAULT NULL,
   `version` int(2) DEFAULT '0',
   `state` int(2) DEFAULT '1',

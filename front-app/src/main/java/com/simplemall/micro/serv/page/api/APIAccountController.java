@@ -61,14 +61,17 @@ public class APIAccountController {
 		Account account = accountFeignClient.login(phone, password);
 		if (StringUtils.isEmpty(account.getTid())) {
 			restAPIResult = new RestAPIResult<>("登陆失败，用户名或密码不正确!");
+			restAPIResult.setRespData("login_fail");
 		} else {
 			try {
 				// 正常情况返回jwt
 				JSONObject subject = new JSONObject(true);
 				subject.put("tid", account.getTid());
 				// token此处定义12小时有效，据实际应用场景确定有效性，也可以定义刷新机制，保持用户token的使用时限
+//				String accessToken = JWTUtils.createJWT(UUIDUtils.getUUID(), subject.toJSONString(),
+//						12 * 60 * 60 * 1000);
 				String accessToken = JWTUtils.createJWT(UUIDUtils.getUUID(), subject.toJSONString(),
-						12 * 60 * 60 * 1000);
+						15 * 60 * 1000);//15分钟
 				restAPIResult.setRespData(accessToken);
 			} catch (Exception e) {
 				logger.error("生成jwt异常{}", e);
